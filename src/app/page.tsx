@@ -1,5 +1,5 @@
 import { SummaryCard } from "@/components/dashboard/summary-card";
-import { getPageSummary } from "@/lib/mock-pages";
+import { getPageSummary } from "@/lib/mock-page-audits";
 import Link from "next/link";
 
 export default function Home() {

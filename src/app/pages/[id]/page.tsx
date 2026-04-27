@@ -1,4 +1,4 @@
-import { getPageDetailById } from "@/lib/mock-pages";
+import { getPageDetailById } from "@/lib/mock-page-audits";
 import Link from "next/link";
 
 type PageDetailViewProps = {

@@ -1,5 +1,5 @@
 import { PagesTable } from "@/components/dashboard/pages-table";
-import { getPageTableRows } from "@/lib/mock-pages";
+import { getPageTableRows } from "@/lib/mock-page-audits";
 
 export default function PagesView() {
   const rows = getPageTableRows();

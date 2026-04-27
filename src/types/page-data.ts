@@ -54,3 +54,11 @@ export type PageDetail = {
   totalIssueCount: number;
   issues: PageIssue[];
 };
+
+export type RecommendationAction = {
+  title: string;
+  category: IssueCategory;
+  priority: IssuePriority;
+  explanation: string;
+  isQuickWin: boolean;
+};

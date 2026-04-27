@@ -4,6 +4,7 @@ import type {
   PageDetail,
   PageRecord,
   PageTableRow,
+  RecommendationAction,
 } from "@/types/page-data";
 
 const mockPages: PageRecord[] = [
@@ -218,6 +219,24 @@ function getHighestPriority(issues: PageRecord["issues"]): IssuePriority | "none
       priorityRank[issue.priority] > priorityRank[top] ? issue.priority : top,
     "low",
   );
+}
+
+export function getRecommendedActionsForPage(id: string): RecommendationAction[] {
+  const page = mockPages.find((item) => item.id === id);
+
+  if (!page) {
+    return [];
+  }
+
+  return [...page.issues]
+    .sort((a, b) => priorityRank[b.priority] - priorityRank[a.priority])
+    .map((issue) => ({
+      title: `Fix: ${issue.title}`,
+      category: issue.category,
+      priority: issue.priority,
+      explanation: issue.description,
+      isQuickWin: issue.isQuickWin,
+    }));
 }
 
 export function getPageTableRows(): PageTableRow[] {
