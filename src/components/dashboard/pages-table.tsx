@@ -1,21 +1,16 @@
 import type { PageTableRow } from "@/types/page-data";
+import {
+  PriorityBadge,
+  StatusBadge,
+} from "@/lib/dashboard-badges";
+import {
+  formatPageStatus,
+  formatPageType,
+} from "@/lib/format-page-display";
 import Link from "next/link";
 
 type PagesTableProps = {
   rows: PageTableRow[];
-};
-
-const priorityClassName: Record<PageTableRow["highestPriority"], string> = {
-  high: "bg-rose-50 text-rose-700",
-  medium: "bg-amber-50 text-amber-700",
-  low: "bg-emerald-50 text-emerald-700",
-  none: "bg-slate-100 text-slate-600",
-};
-
-const statusClassName: Record<PageTableRow["status"], string> = {
-  "needs-review": "bg-rose-50 text-rose-700",
-  "in-progress": "bg-amber-50 text-amber-700",
-  done: "bg-emerald-50 text-emerald-700",
 };
 
 export function PagesTable({ rows }: PagesTableProps) {
@@ -41,21 +36,18 @@ export function PagesTable({ rows }: PagesTableProps) {
                 </Link>
               </td>
               <td className="px-4 py-3 text-slate-600">{row.url}</td>
-              <td className="px-4 py-3 text-slate-700">{row.pageType}</td>
+              <td className="px-4 py-3 text-slate-700">
+                {formatPageType(row.pageType)}
+              </td>
               <td className="px-4 py-3 text-slate-700">{row.issueCount}</td>
               <td className="px-4 py-3">
-                <span
-                  className={`inline-flex rounded-full px-2.5 py-1 text-xs font-semibold ${priorityClassName[row.highestPriority]}`}
-                >
-                  {row.highestPriority}
-                </span>
+                <PriorityBadge priority={row.highestPriority} />
               </td>
               <td className="px-4 py-3">
-                <span
-                  className={`inline-flex rounded-full px-2.5 py-1 text-xs font-semibold ${statusClassName[row.status]}`}
-                >
-                  {row.status}
-                </span>
+                <StatusBadge
+                  status={row.status}
+                  label={formatPageStatus(row.status)}
+                />
               </td>
             </tr>
           ))}

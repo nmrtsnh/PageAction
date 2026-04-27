@@ -2,12 +2,13 @@ import type {
   DashboardSummary,
   IssuePriority,
   PageDetail,
+  PageIssue,
   PageRecord,
   PageTableRow,
   RecommendationAction,
 } from "@/types/page-data";
 
-const mockPages: PageRecord[] = [
+const mockPageAudits: PageRecord[] = [
   {
     id: "p-1",
     title: "GlobeGlider Home",
@@ -186,12 +187,12 @@ const mockPages: PageRecord[] = [
 ];
 
 export function getPageSummary(): DashboardSummary {
-  const totalPages = mockPages.length;
-  const pagesWithIssues = mockPages.filter((page) => page.issues.length > 0).length;
-  const highPriorityIssues = mockPages.flatMap((page) => page.issues).filter(
+  const totalPages = mockPageAudits.length;
+  const pagesWithIssues = mockPageAudits.filter((page) => page.issues.length > 0).length;
+  const highPriorityIssues = mockPageAudits.flatMap((page) => page.issues).filter(
     (issue) => issue.priority === "high",
   ).length;
-  const quickWins = mockPages.flatMap((page) => page.issues).filter(
+  const quickWins = mockPageAudits.flatMap((page) => page.issues).filter(
     (issue) => issue.isQuickWin,
   ).length;
 
@@ -221,15 +222,12 @@ function getHighestPriority(issues: PageRecord["issues"]): IssuePriority | "none
   );
 }
 
-export function getRecommendedActionsForPage(id: string): RecommendationAction[] {
-  const page = mockPages.find((item) => item.id === id);
+function findMockPageById(id: string): PageRecord | undefined {
+  return mockPageAudits.find((item) => item.id === id);
+}
 
-  if (!page) {
-    return [];
-  }
-
-  function toAction(issue: PageRecord["issues"][number]): RecommendationAction {
-    switch (issue.title) {
+function issueToAction(issue: PageIssue): RecommendationAction {
+  switch (issue.title) {
       case "Missing or weak meta description":
         return {
           title: "Add a stronger homepage meta description",
@@ -382,33 +380,18 @@ export function getRecommendedActionsForPage(id: string): RecommendationAction[]
           explanation: `Make this update: ${issue.description}`,
           isQuickWin: issue.isQuickWin,
         };
-    }
   }
+}
 
-  return [...page.issues]
+function buildRecommendedActionsFromIssues(
+  issues: PageIssue[],
+): RecommendationAction[] {
+  return [...issues]
     .sort((a, b) => priorityRank[b.priority] - priorityRank[a.priority])
-    .map((issue) => toAction(issue));
+    .map((issue) => issueToAction(issue));
 }
 
-export function getPageTableRows(): PageTableRow[] {
-  return mockPages.map((page) => ({
-    id: page.id,
-    title: page.title,
-    url: page.url,
-    pageType: page.pageType,
-    issueCount: page.issues.length,
-    highestPriority: getHighestPriority(page.issues),
-    status: page.status,
-  }));
-}
-
-export function getPageDetailById(id: string): PageDetail | null {
-  const page = mockPages.find((item) => item.id === id);
-
-  if (!page) {
-    return null;
-  }
-
+function buildPageDetail(page: PageRecord): PageDetail {
   return {
     id: page.id,
     title: page.title,
@@ -420,4 +403,42 @@ export function getPageDetailById(id: string): PageDetail | null {
     totalIssueCount: page.issues.length,
     issues: page.issues,
   };
+}
+
+export type PageDetailWithRecommendations = {
+  detail: PageDetail;
+  actions: RecommendationAction[];
+};
+
+export function getPageDetailWithRecommendations(
+  id: string,
+): PageDetailWithRecommendations | null {
+  const page = findMockPageById(id);
+  if (!page) {
+    return null;
+  }
+  return {
+    detail: buildPageDetail(page),
+    actions: buildRecommendedActionsFromIssues(page.issues),
+  };
+}
+
+export function getRecommendedActionsForPage(id: string): RecommendationAction[] {
+  return getPageDetailWithRecommendations(id)?.actions ?? [];
+}
+
+export function getPageTableRows(): PageTableRow[] {
+  return mockPageAudits.map((page) => ({
+    id: page.id,
+    title: page.title,
+    url: page.url,
+    pageType: page.pageType,
+    issueCount: page.issues.length,
+    highestPriority: getHighestPriority(page.issues),
+    status: page.status,
+  }));
+}
+
+export function getPageDetailById(id: string): PageDetail | null {
+  return getPageDetailWithRecommendations(id)?.detail ?? null;
 }

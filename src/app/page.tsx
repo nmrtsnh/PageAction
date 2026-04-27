@@ -1,4 +1,5 @@
 import { SummaryCard } from "@/components/dashboard/summary-card";
+import { PAGEACTION_WORKSPACE_EYEBROW } from "@/lib/pageaction-copy";
 import { getPageSummary } from "@/lib/mock-page-audits";
 import Link from "next/link";
 
@@ -10,7 +11,7 @@ export default function Home() {
       <div className="mx-auto w-full max-w-6xl p-6 md:p-10">
         <header className="rounded-xl border border-slate-200 bg-white p-6">
           <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
-            Page Optimization Workspace
+            {PAGEACTION_WORKSPACE_EYEBROW}
           </p>
           <h1 className="mt-2 text-3xl font-bold">PageAction</h1>
           <p className="mt-3 max-w-3xl text-sm text-slate-600">

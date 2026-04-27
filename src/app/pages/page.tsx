@@ -1,4 +1,5 @@
 import { PagesTable } from "@/components/dashboard/pages-table";
+import { PAGEACTION_WORKSPACE_EYEBROW } from "@/lib/pageaction-copy";
 import { getPageTableRows } from "@/lib/mock-page-audits";
 
 export default function PagesView() {
@@ -9,7 +10,7 @@ export default function PagesView() {
       <div className="mx-auto w-full max-w-6xl p-6 md:p-10">
         <header className="mb-6">
           <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
-            PageAction Workspace
+            {PAGEACTION_WORKSPACE_EYEBROW}
           </p>
           <h1 className="mt-2 text-3xl font-bold">Pages</h1>
           <p className="mt-2 text-sm text-slate-600">
