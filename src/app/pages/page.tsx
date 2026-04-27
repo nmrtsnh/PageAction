@@ -1,8 +1,8 @@
-import { PagesTable } from "@/components/dashboard/pages-table";
+import { PagesView } from "@/components/dashboard/pages-view";
 import { PAGEACTION_WORKSPACE_EYEBROW } from "@/lib/pageaction-copy";
 import { getPageTableRows } from "@/lib/mock-page-audits";
 
-export default function PagesView() {
+export default function PagesRoute() {
   const rows = getPageTableRows();
 
   return (
@@ -18,7 +18,7 @@ export default function PagesView() {
             fix status.
           </p>
         </header>
-        <PagesTable rows={rows} />
+        <PagesView rows={rows} />
       </div>
     </main>
   );
