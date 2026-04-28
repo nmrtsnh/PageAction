@@ -3,6 +3,7 @@ import {
   PriorityBadge,
   StatusBadge,
 } from "@/lib/dashboard-badges";
+import { WorkspaceNav } from "@/components/layout/workspace-nav";
 import {
   formatPageStatus,
   formatPageType,
@@ -23,6 +24,7 @@ export default async function PageDetailView({ params }: PageDetailViewProps) {
     return (
       <main className="min-h-screen bg-slate-50 text-slate-900">
         <div className="mx-auto w-full max-w-6xl p-6 md:p-10">
+          <WorkspaceNav />
           <p className="text-sm text-slate-600">Page not found.</p>
           <Link href="/pages" className="mt-4 inline-block text-sm text-blue-700 hover:underline">
             Back to Pages
@@ -37,6 +39,7 @@ export default async function PageDetailView({ params }: PageDetailViewProps) {
   return (
     <main className="min-h-screen bg-slate-50 text-slate-900">
       <div className="mx-auto w-full max-w-6xl p-6 md:p-10">
+        <WorkspaceNav />
         <header className="rounded-xl border border-slate-200 bg-white p-6">
           <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
             {PAGEACTION_WORKSPACE_EYEBROW}

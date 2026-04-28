@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "PageAction",
-  description: "A page optimization workspace for small teams.",
+  title: "Website Growth OS",
+  description: "A workspace to improve website growth for small teams.",
 };
 
 export default function RootLayout({
