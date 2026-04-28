@@ -1,6 +1,7 @@
 import { PagesView } from "@/components/dashboard/pages-view";
 import { PAGEACTION_WORKSPACE_EYEBROW } from "@/lib/pageaction-copy";
 import { getPageTableRows } from "@/lib/mock-page-audits";
+import Link from "next/link";
 
 export default function PagesRoute() {
   const rows = getPageTableRows();
@@ -8,6 +9,14 @@ export default function PagesRoute() {
   return (
     <main className="min-h-screen bg-slate-50 text-slate-900">
       <div className="mx-auto w-full max-w-6xl p-6 md:p-10">
+        <p className="mb-3">
+          <Link
+            href="/"
+            className="text-sm text-slate-600 transition hover:text-slate-900 hover:underline"
+          >
+            Back to Overview
+          </Link>
+        </p>
         <header className="mb-6">
           <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
             {PAGEACTION_WORKSPACE_EYEBROW}
