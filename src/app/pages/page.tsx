@@ -14,13 +14,13 @@ export default function PagesRoute() {
         <p className="mb-3">
           <Link
             href="/dashboard"
-            className="text-sm text-slate-600 transition hover:text-slate-900 hover:underline"
+            className="text-sm text-indigo-700 transition hover:text-indigo-800 hover:underline"
           >
             Back to Overview
           </Link>
         </p>
         <header className="mb-6">
-          <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+          <p className="text-xs font-semibold uppercase tracking-wide text-indigo-700">
             {PAGEACTION_WORKSPACE_EYEBROW}
           </p>
           <h1 className="mt-2 text-3xl font-bold">Pages</h1>

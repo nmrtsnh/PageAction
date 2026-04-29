@@ -26,7 +26,7 @@ export default async function PageDetailView({ params }: PageDetailViewProps) {
         <div className="mx-auto w-full max-w-6xl p-6 md:p-10">
           <WorkspaceNav />
           <p className="text-sm text-slate-600">Page not found.</p>
-          <Link href="/pages" className="mt-4 inline-block text-sm text-blue-700 hover:underline">
+          <Link href="/pages" className="mt-4 inline-block text-sm text-indigo-700 hover:underline">
             Back to Pages
           </Link>
         </div>
@@ -40,8 +40,8 @@ export default async function PageDetailView({ params }: PageDetailViewProps) {
     <main className="min-h-screen bg-slate-50 text-slate-900">
       <div className="mx-auto w-full max-w-6xl p-6 md:p-10">
         <WorkspaceNav />
-        <header className="rounded-xl border border-slate-200 bg-white p-6">
-          <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+        <header className="rounded-xl border border-indigo-100 bg-white p-6">
+          <p className="text-xs font-semibold uppercase tracking-wide text-indigo-700">
             {PAGEACTION_WORKSPACE_EYEBROW}
           </p>
           <h1 className="mt-2 text-2xl font-bold">{detail.title}</h1>
@@ -71,12 +71,12 @@ export default async function PageDetailView({ params }: PageDetailViewProps) {
               <span className="text-slate-600">{detail.totalIssueCount}</span>
             </p>
           </div>
-          <Link href="/pages" className="mt-5 inline-block text-sm text-blue-700 hover:underline">
+          <Link href="/pages" className="mt-5 inline-block text-sm text-indigo-700 hover:underline">
             Back to Pages
           </Link>
         </header>
 
-        <section className="mt-6 rounded-xl border border-slate-200 bg-white p-6">
+        <section className="mt-6 rounded-xl border border-indigo-100 bg-white p-6">
           <h2 className="text-lg font-semibold">Recommendations / Actions</h2>
           <p className="mt-1 text-sm text-slate-600">
             Prioritized actions based on the current issue set for this page.
@@ -103,7 +103,7 @@ export default async function PageDetailView({ params }: PageDetailViewProps) {
           </ul>
         </section>
 
-        <section className="mt-6 rounded-xl border border-slate-200 bg-white p-6">
+        <section className="mt-6 rounded-xl border border-indigo-100 bg-white p-6">
           <h2 className="text-lg font-semibold">Issues</h2>
           <ul className="mt-4 space-y-3">
             {detail.issues.map((issue, index) => (

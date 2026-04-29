@@ -1,19 +1,52 @@
 import { SummaryCard } from "@/components/dashboard/summary-card";
 import { WorkspaceNav } from "@/components/layout/workspace-nav";
 import { PAGEACTION_WORKSPACE_EYEBROW } from "@/lib/pageaction-copy";
+import Link from "next/link";
+
+const weeklyInsights = [
+  {
+    title: "Biggest lift: itinerary intent clarity",
+    summary:
+      'Pages with direct-answer updates, especially "/blog/city-guides/amsterdam-5-day-itinerary/", show stronger scroll depth this week.',
+    references: [
+      { label: "5-Day Amsterdam Itinerary page", href: "/pages/p-5" },
+      { label: "Trip-length answer idea", href: "/content-ideas" },
+      { label: "Trip-length answer experiment", href: "/growth-experiments" },
+    ],
+  },
+  {
+    title: "Primary risk: destination discoverability",
+    summary:
+      '"/destinations/" still has high-priority structure issues, creating friction for crawlers and users exploring regions.',
+    references: [
+      { label: "Destinations page", href: "/pages/p-2" },
+      { label: "SEO checklist actions", href: "/seo-checklist" },
+    ],
+  },
+  {
+    title: "Next decision",
+    summary:
+      "Prioritize answer-first content refreshes before launching new experiments to strengthen baseline quality.",
+    references: [
+      { label: "Content Ideas planning", href: "/content-ideas" },
+      { label: "Dashboard priorities", href: "/dashboard" },
+    ],
+  },
+];
 
 export default function InsightsRoute() {
   return (
     <main className="min-h-screen bg-slate-50 text-slate-900">
       <div className="mx-auto w-full max-w-6xl p-6 md:p-10">
         <WorkspaceNav />
-        <header className="rounded-xl border border-slate-200 bg-white p-6">
-          <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+        <header className="rounded-xl border border-indigo-100 bg-white p-6">
+          <p className="text-xs font-semibold uppercase tracking-wide text-indigo-700">
             {PAGEACTION_WORKSPACE_EYEBROW}
           </p>
           <h1 className="mt-2 text-3xl font-bold">Insights</h1>
           <p className="mt-2 text-sm text-slate-600">
-            Snapshot trends to support weekly growth decisions.
+            Weekly growth intelligence for GlobeGlider with linked evidence
+            from pages, content, and experiments.
           </p>
         </header>
 
@@ -23,13 +56,36 @@ export default function InsightsRoute() {
           <SummaryCard label="New content ideas" value={3} />
         </section>
 
-        <div className="mt-6 rounded-xl border border-slate-200 bg-white p-5">
-          <h2 className="text-base font-semibold">This week at a glance</h2>
+        <div className="mt-6 rounded-xl border border-indigo-100 bg-indigo-50/40 p-5">
+          <h2 className="text-base font-semibold">At a glance</h2>
           <p className="mt-2 text-sm text-slate-600">
-            Page fixes are trending in the right direction. The next leverage
-            point is content updates that support high-priority page topics.
+            Page fixes are moving in the right direction, with the biggest
+            upside still in answer-first updates tied to high-priority issues.
           </p>
         </div>
+
+        <section className="mt-6 space-y-3">
+          {weeklyInsights.map((item) => (
+            <article
+              key={item.title}
+              className="rounded-xl border border-slate-200 bg-white p-5"
+            >
+              <h2 className="text-base font-semibold text-slate-900">{item.title}</h2>
+              <p className="mt-2 text-sm text-slate-600">{item.summary}</p>
+              <div className="mt-3 flex flex-wrap gap-2">
+                {item.references.map((reference) => (
+                  <Link
+                    key={reference.label}
+                    href={reference.href}
+                    className="inline-flex rounded-md border border-indigo-200 bg-indigo-50 px-2.5 py-1 text-xs font-medium text-indigo-700 hover:bg-indigo-100"
+                  >
+                    {reference.label}
+                  </Link>
+                ))}
+              </div>
+            </article>
+          ))}
+        </section>
       </div>
     </main>
   );
