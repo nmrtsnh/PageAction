@@ -82,11 +82,17 @@ export default function SeoChecklistRoute() {
 
         <p className="mt-5 text-sm text-slate-600">
           Review issues in{" "}
-          <Link href="/pages" className="text-indigo-700 hover:underline">
+          <Link
+            href="/pages"
+            className="text-indigo-700 transition hover:text-indigo-800 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-300"
+          >
             Pages
           </Link>
           , execute the grouped tasks here, and send content-driven actions to{" "}
-          <Link href="/content-ideas" className="text-indigo-700 hover:underline">
+          <Link
+            href="/content-ideas"
+            className="text-indigo-700 transition hover:text-indigo-800 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-300"
+          >
             Content Ideas
           </Link>
           .
@@ -112,7 +118,10 @@ export default function SeoChecklistRoute() {
                     <span className="mt-0.5 inline-flex h-4 w-4 rounded-sm border border-indigo-300 bg-white" />
                     <span>
                       {item.task}{" "}
-                      <Link href={item.pagePath} className="text-indigo-700 hover:underline">
+                      <Link
+                        href={item.pagePath}
+                        className="text-indigo-700 transition hover:text-indigo-800 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-300"
+                      >
                         ({item.page})
                       </Link>
                     </span>

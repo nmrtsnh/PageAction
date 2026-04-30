@@ -29,9 +29,12 @@ export function PagesTable({ rows }: PagesTableProps) {
         </thead>
         <tbody className="divide-y divide-slate-100">
           {rows.map((row) => (
-            <tr key={row.id} className="hover:bg-slate-50">
+            <tr key={row.id} className="transition hover:bg-indigo-50/40">
               <td className="px-4 py-3 font-medium text-slate-900">
-                <Link href={`/pages/${row.id}`} className="hover:underline">
+                <Link
+                  href={`/pages/${row.id}`}
+                  className="cursor-pointer rounded-sm hover:text-indigo-700 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-300"
+                >
                   {row.title}
                 </Link>
               </td>

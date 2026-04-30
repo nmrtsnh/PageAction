@@ -68,13 +68,16 @@ export default function ContentIdeasRoute() {
           </h2>
           <p className="mt-2 text-sm text-slate-600">
             Prioritize ideas tied to high-priority page issues in{" "}
-            <Link href="/pages" className="text-indigo-700 hover:underline">
+            <Link
+              href="/pages"
+              className="text-indigo-700 transition hover:text-indigo-800 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-300"
+            >
               Pages
             </Link>
             , then hand off the top two to{" "}
             <Link
               href="/growth-experiments"
-              className="text-indigo-700 hover:underline"
+              className="text-indigo-700 transition hover:text-indigo-800 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-300"
             >
               Growth Experiments
             </Link>
@@ -105,7 +108,10 @@ export default function ContentIdeasRoute() {
                 <div>
                   <dt className="font-medium text-slate-700">Source page</dt>
                   <dd className="text-slate-600">
-                    <Link href={idea.sourcePath} className="text-indigo-700 hover:underline">
+                    <Link
+                      href={idea.sourcePath}
+                      className="text-indigo-700 transition hover:text-indigo-800 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-300"
+                    >
                       {idea.sourcePage}
                     </Link>
                   </dd>
@@ -119,7 +125,7 @@ export default function ContentIdeasRoute() {
                   <dd className="text-slate-600">
                     <Link
                       href="/growth-experiments"
-                      className="text-indigo-700 hover:underline"
+                      className="text-indigo-700 transition hover:text-indigo-800 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-300"
                     >
                       {idea.linkedExperiment}
                     </Link>

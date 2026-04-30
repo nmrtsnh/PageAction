@@ -99,7 +99,10 @@ export default function DashboardRoute() {
               <h2 className="text-base font-semibold text-slate-900">
                 Top pages needing attention
               </h2>
-              <Link href="/pages" className="text-sm text-indigo-700 hover:underline">
+              <Link
+                href="/pages"
+                className="text-sm text-indigo-700 transition hover:text-indigo-800 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-300"
+              >
                 Open pages
               </Link>
             </div>
@@ -107,7 +110,10 @@ export default function DashboardRoute() {
               {priorityPages.map((page) => (
                 <li key={page.name} className="rounded-lg border border-slate-200 p-3">
                   <div className="flex flex-wrap items-center gap-2">
-                    <Link href={page.href} className="font-semibold text-slate-900 hover:underline">
+                    <Link
+                      href={page.href}
+                      className="font-semibold text-slate-900 transition hover:text-indigo-700 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-300"
+                    >
                       {page.name}
                     </Link>
                     <span className="rounded-full bg-rose-50 px-2 py-0.5 text-xs font-semibold text-rose-700">
@@ -149,7 +155,10 @@ export default function DashboardRoute() {
               <h2 className="text-base font-semibold text-slate-900">
                 New content opportunities
               </h2>
-              <Link href="/content-ideas" className="text-sm text-indigo-700 hover:underline">
+              <Link
+                href="/content-ideas"
+                className="text-sm text-indigo-700 transition hover:text-indigo-800 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-300"
+              >
                 Open planning board
               </Link>
             </div>
@@ -168,7 +177,7 @@ export default function DashboardRoute() {
               <h2 className="text-base font-semibold text-slate-900">Active experiments</h2>
               <Link
                 href="/growth-experiments"
-                className="text-sm text-indigo-700 hover:underline"
+                className="text-sm text-indigo-700 transition hover:text-indigo-800 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-300"
               >
                 Open experiments
               </Link>
@@ -194,19 +203,19 @@ export default function DashboardRoute() {
         <div className="mt-5 flex flex-wrap gap-2.5">
           <Link
             href="/pages"
-            className="inline-flex items-center rounded-lg border border-indigo-600 bg-indigo-600 px-4 py-2 text-sm font-medium text-white transition hover:bg-indigo-700"
+            className="inline-flex items-center rounded-lg border border-indigo-600 bg-indigo-600 px-4 py-2 text-sm font-medium text-white transition hover:bg-indigo-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-300 focus-visible:ring-offset-2"
           >
             Open Pages
           </Link>
           <Link
             href="/content-ideas"
-            className="inline-flex items-center rounded-lg border border-indigo-200 bg-white px-4 py-2 text-sm font-medium text-indigo-700 transition hover:bg-indigo-50"
+            className="inline-flex items-center rounded-lg border border-indigo-200 bg-white px-4 py-2 text-sm font-medium text-indigo-700 transition hover:border-indigo-300 hover:bg-indigo-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-300 focus-visible:ring-offset-2"
           >
             Open Content Ideas
           </Link>
           <Link
             href="/growth-experiments"
-            className="inline-flex items-center rounded-lg border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-700 transition hover:bg-slate-100"
+            className="inline-flex items-center rounded-lg border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-700 transition hover:border-indigo-200 hover:bg-indigo-50 hover:text-indigo-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-300 focus-visible:ring-offset-2"
           >
             Open Experiments
           </Link>

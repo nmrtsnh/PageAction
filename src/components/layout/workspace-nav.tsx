@@ -31,7 +31,7 @@ export function WorkspaceNav() {
                 className={`inline-flex rounded-md px-3 py-2 text-sm font-medium transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-300 focus-visible:ring-offset-2 ${
                   isActive
                     ? "bg-indigo-600 text-white shadow-sm ring-1 ring-indigo-500/30"
-                    : "text-slate-700 hover:bg-indigo-50 hover:text-indigo-700"
+                    : "text-slate-700 hover:bg-indigo-50 hover:text-indigo-700 active:bg-indigo-100"
                 }`}
               >
                 <ModuleIcon module={item.module} className="mr-1.5 h-3.5 w-3.5 opacity-85" />

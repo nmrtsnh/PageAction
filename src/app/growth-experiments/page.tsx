@@ -73,11 +73,17 @@ export default function GrowthExperimentsRoute() {
           </h2>
           <p className="mt-2 text-sm text-slate-600">
             Pull ideas from{" "}
-            <Link href="/content-ideas" className="text-indigo-700 hover:underline">
+            <Link
+              href="/content-ideas"
+              className="text-indigo-700 transition hover:text-indigo-800 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-300"
+            >
               Content Ideas
             </Link>
             , run tests here, then publish outcomes in{" "}
-            <Link href="/insights" className="text-indigo-700 hover:underline">
+            <Link
+              href="/insights"
+              className="text-indigo-700 transition hover:text-indigo-800 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-300"
+            >
               Insights
             </Link>
             .
@@ -117,7 +123,10 @@ export default function GrowthExperimentsRoute() {
                 <div>
                   <dt className="font-medium text-slate-700">Target page</dt>
                   <dd className="text-slate-600">
-                    <Link href={experiment.targetPath} className="text-indigo-700 hover:underline">
+                    <Link
+                      href={experiment.targetPath}
+                      className="text-indigo-700 transition hover:text-indigo-800 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-300"
+                    >
                       {experiment.targetPage}
                     </Link>
                   </dd>
@@ -133,7 +142,10 @@ export default function GrowthExperimentsRoute() {
                 <div>
                   <dt className="font-medium text-slate-700">Related idea</dt>
                   <dd className="text-slate-600">
-                    <Link href="/content-ideas" className="text-indigo-700 hover:underline">
+                    <Link
+                      href="/content-ideas"
+                      className="text-indigo-700 transition hover:text-indigo-800 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-300"
+                    >
                       {experiment.relatedIdea}
                     </Link>
                   </dd>
