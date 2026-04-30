@@ -162,10 +162,14 @@ export function PagesView({ rows }: PagesViewProps) {
       </div>
 
       {filteredRows.length === 0 ? (
-        <p className="rounded-xl border border-slate-200 bg-white p-6 text-sm text-slate-600">
-          No pages match your search or filters. Try adjusting or reset to see
-          all pages.
-        </p>
+        <div className="rounded-xl border border-indigo-100 bg-indigo-50/40 p-5">
+          <p className="text-sm font-medium text-slate-900">
+            No pages match this view.
+          </p>
+          <p className="mt-1 text-sm text-slate-600">
+            Adjust filters or reset to return to the full page list.
+          </p>
+        </div>
       ) : (
         <PagesTable rows={filteredRows} />
       )}

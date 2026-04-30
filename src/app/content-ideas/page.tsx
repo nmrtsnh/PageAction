@@ -89,51 +89,57 @@ export default function ContentIdeasRoute() {
         </section>
 
         <ul className="mt-5 space-y-2.5">
-          {ideas.map((idea) => (
-            <li
-              key={idea.title}
-              className={idea.stage === "Ready to brief" ? featuredCardClass : standardCardClass}
-            >
-              <div className="flex flex-wrap items-center gap-2">
-                <span className="rounded-full bg-indigo-50 px-2.5 py-1 text-xs font-semibold text-indigo-700">
-                  {idea.stage}
-                </span>
-                <span className="rounded-full bg-slate-100 px-2.5 py-1 text-xs font-semibold text-slate-700">
-                  {idea.format}
-                </span>
-              </div>
-              <h2 className="mt-2.5 font-semibold text-slate-900">{idea.title}</h2>
-              <p className="mt-1.5 text-sm text-slate-600">{idea.outcome}</p>
-              <dl className="mt-3.5 grid gap-2 text-sm sm:grid-cols-2">
-                <div>
-                  <dt className="font-medium text-slate-700">Source page</dt>
-                  <dd className="text-slate-600">
-                    <Link
-                      href={idea.sourcePath}
-                      className="text-indigo-700 transition hover:text-indigo-800 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-300"
-                    >
-                      {idea.sourcePage}
-                    </Link>
-                  </dd>
-                </div>
-                <div>
-                  <dt className="font-medium text-slate-700">Related issue</dt>
-                  <dd className="text-slate-600">{idea.relatedIssue}</dd>
-                </div>
-                <div className="sm:col-span-2">
-                  <dt className="font-medium text-slate-700">Linked experiment</dt>
-                  <dd className="text-slate-600">
-                    <Link
-                      href="/growth-experiments"
-                      className="text-indigo-700 transition hover:text-indigo-800 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-300"
-                    >
-                      {idea.linkedExperiment}
-                    </Link>
-                  </dd>
-                </div>
-              </dl>
+          {ideas.length === 0 ? (
+            <li className="rounded-xl border border-indigo-100 bg-indigo-50/40 p-5 text-sm text-slate-600">
+              No ideas in this focus area yet. Add one tied to a high-priority page issue.
             </li>
-          ))}
+          ) : (
+            ideas.map((idea) => (
+              <li
+                key={idea.title}
+                className={idea.stage === "Ready to brief" ? featuredCardClass : standardCardClass}
+              >
+                <div className="flex flex-wrap items-center gap-2">
+                  <span className="rounded-full bg-indigo-50 px-2.5 py-1 text-xs font-semibold text-indigo-700">
+                    {idea.stage}
+                  </span>
+                  <span className="rounded-full bg-slate-100 px-2.5 py-1 text-xs font-semibold text-slate-700">
+                    {idea.format}
+                  </span>
+                </div>
+                <h2 className="mt-2.5 font-semibold text-slate-900">{idea.title}</h2>
+                <p className="mt-1.5 text-sm text-slate-600">{idea.outcome}</p>
+                <dl className="mt-3.5 grid gap-2 text-sm sm:grid-cols-2">
+                  <div>
+                    <dt className="font-medium text-slate-700">Source page</dt>
+                    <dd className="text-slate-600">
+                      <Link
+                        href={idea.sourcePath}
+                        className="text-indigo-700 transition hover:text-indigo-800 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-300"
+                      >
+                        {idea.sourcePage}
+                      </Link>
+                    </dd>
+                  </div>
+                  <div>
+                    <dt className="font-medium text-slate-700">Related issue</dt>
+                    <dd className="text-slate-600">{idea.relatedIssue}</dd>
+                  </div>
+                  <div className="sm:col-span-2">
+                    <dt className="font-medium text-slate-700">Linked experiment</dt>
+                    <dd className="text-slate-600">
+                      <Link
+                        href="/growth-experiments"
+                        className="text-indigo-700 transition hover:text-indigo-800 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-300"
+                      >
+                        {idea.linkedExperiment}
+                      </Link>
+                    </dd>
+                  </div>
+                </dl>
+              </li>
+            ))
+          )}
         </ul>
       </div>
     </main>

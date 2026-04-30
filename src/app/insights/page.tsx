@@ -78,26 +78,32 @@ export default function InsightsRoute() {
         </div>
 
         <section className="mt-5 space-y-2.5">
-          {weeklyInsights.map((item) => (
-            <article
-              key={item.title}
-              className={item.title.startsWith("Biggest lift") ? featuredCardClass : standardCardClass}
-            >
-              <h2 className="text-base font-semibold text-slate-900">{item.title}</h2>
-              <p className="mt-1.5 text-sm text-slate-600">{item.summary}</p>
-              <div className="mt-2.5 flex flex-wrap gap-2">
-                {item.references.map((reference) => (
-                  <Link
-                    key={reference.label}
-                    href={reference.href}
-                    className="inline-flex rounded-md border border-indigo-200 bg-indigo-50 px-2.5 py-1 text-xs font-medium text-indigo-700 transition hover:border-indigo-300 hover:bg-indigo-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-300 focus-visible:ring-offset-1"
-                  >
-                    {reference.label}
-                  </Link>
-                ))}
-              </div>
-            </article>
-          ))}
+          {weeklyInsights.length === 0 ? (
+            <div className="rounded-xl border border-indigo-100 bg-indigo-50/40 p-5 text-sm text-slate-600">
+              No insights published yet. Add one weekly observation to guide next actions.
+            </div>
+          ) : (
+            weeklyInsights.map((item) => (
+              <article
+                key={item.title}
+                className={item.title.startsWith("Biggest lift") ? featuredCardClass : standardCardClass}
+              >
+                <h2 className="text-base font-semibold text-slate-900">{item.title}</h2>
+                <p className="mt-1.5 text-sm text-slate-600">{item.summary}</p>
+                <div className="mt-2.5 flex flex-wrap gap-2">
+                  {item.references.map((reference) => (
+                    <Link
+                      key={reference.label}
+                      href={reference.href}
+                      className="inline-flex rounded-md border border-indigo-200 bg-indigo-50 px-2.5 py-1 text-xs font-medium text-indigo-700 transition hover:border-indigo-300 hover:bg-indigo-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-300 focus-visible:ring-offset-1"
+                    >
+                      {reference.label}
+                    </Link>
+                  ))}
+                </div>
+              </article>
+            ))
+          )}
         </section>
       </div>
     </main>

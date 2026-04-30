@@ -107,22 +107,28 @@ export default function DashboardRoute() {
               </Link>
             </div>
             <ul className="mt-3.5 space-y-2.5">
-              {priorityPages.map((page) => (
-                <li key={page.name} className="rounded-lg border border-slate-200 p-3">
-                  <div className="flex flex-wrap items-center gap-2">
-                    <Link
-                      href={page.href}
-                      className="font-semibold text-slate-900 transition hover:text-indigo-700 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-300"
-                    >
-                      {page.name}
-                    </Link>
-                    <span className="rounded-full bg-rose-50 px-2 py-0.5 text-xs font-semibold text-rose-700">
-                      {page.priority}
-                    </span>
-                  </div>
-                  <p className="mt-1 text-sm text-slate-600">{page.issue}</p>
+              {priorityPages.length === 0 ? (
+                <li className="rounded-lg border border-indigo-100 bg-indigo-50/40 p-3 text-sm text-slate-600">
+                  No priority pages right now. Check back after the next audit cycle.
                 </li>
-              ))}
+              ) : (
+                priorityPages.map((page) => (
+                  <li key={page.name} className="rounded-lg border border-slate-200 p-3">
+                    <div className="flex flex-wrap items-center gap-2">
+                      <Link
+                        href={page.href}
+                        className="font-semibold text-slate-900 transition hover:text-indigo-700 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-300"
+                      >
+                        {page.name}
+                      </Link>
+                      <span className="rounded-full bg-rose-50 px-2 py-0.5 text-xs font-semibold text-rose-700">
+                        {page.priority}
+                      </span>
+                    </div>
+                    <p className="mt-1 text-sm text-slate-600">{page.issue}</p>
+                  </li>
+                ))
+              )}
             </ul>
           </article>
 
@@ -163,12 +169,18 @@ export default function DashboardRoute() {
               </Link>
             </div>
             <ul className="mt-3.5 space-y-2">
-              {contentOpportunities.map((opportunity) => (
-                <li key={opportunity.title} className={`${secondaryCardClass} rounded-lg p-3`}>
-                  <p className="font-medium text-slate-900">{opportunity.title}</p>
-                  <p className="mt-1 text-sm text-slate-600">{opportunity.source}</p>
+              {contentOpportunities.length === 0 ? (
+                <li className={`${secondaryCardClass} rounded-lg p-3 text-sm text-slate-600`}>
+                  No fresh opportunities yet. Use the Content Ideas board to queue new topics.
                 </li>
-              ))}
+              ) : (
+                contentOpportunities.map((opportunity) => (
+                  <li key={opportunity.title} className={`${secondaryCardClass} rounded-lg p-3`}>
+                    <p className="font-medium text-slate-900">{opportunity.title}</p>
+                    <p className="mt-1 text-sm text-slate-600">{opportunity.source}</p>
+                  </li>
+                ))
+              )}
             </ul>
           </article>
 
@@ -183,19 +195,25 @@ export default function DashboardRoute() {
               </Link>
             </div>
             <ul className="mt-3.5 space-y-2">
-              {activeExperiments.map((experiment) => (
-                <li key={experiment.name} className={`${secondaryCardClass} rounded-lg p-3`}>
-                  <div className="flex flex-wrap items-center gap-2">
-                    <p className="font-medium text-slate-900">{experiment.name}</p>
-                    <span className="rounded-full bg-emerald-50 px-2 py-0.5 text-xs font-semibold text-emerald-700">
-                      {experiment.status}
-                    </span>
-                  </div>
-                  <p className="mt-1 text-sm text-slate-600">
-                    Core metric: {experiment.metric}
-                  </p>
+              {activeExperiments.length === 0 ? (
+                <li className={`${secondaryCardClass} rounded-lg p-3 text-sm text-slate-600`}>
+                  No active experiments yet. Start one from Growth Experiments to track impact.
                 </li>
-              ))}
+              ) : (
+                activeExperiments.map((experiment) => (
+                  <li key={experiment.name} className={`${secondaryCardClass} rounded-lg p-3`}>
+                    <div className="flex flex-wrap items-center gap-2">
+                      <p className="font-medium text-slate-900">{experiment.name}</p>
+                      <span className="rounded-full bg-emerald-50 px-2 py-0.5 text-xs font-semibold text-emerald-700">
+                        {experiment.status}
+                      </span>
+                    </div>
+                    <p className="mt-1 text-sm text-slate-600">
+                      Core metric: {experiment.metric}
+                    </p>
+                  </li>
+                ))
+              )}
             </ul>
           </article>
         </section>

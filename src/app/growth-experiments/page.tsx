@@ -93,67 +93,80 @@ export default function GrowthExperimentsRoute() {
           </p>
         </section>
 
-        <ul className="mt-5 space-y-2.5">
-          {experiments.map((experiment) => (
-            <li
-              key={experiment.name}
-              className={experiment.status === "Running" ? featuredCardClass : standardCardClass}
-            >
-              <div className="flex flex-wrap items-center justify-between gap-2">
-                <h2 className="font-semibold text-slate-900">{experiment.name}</h2>
-                <span
-                  className={`rounded-full px-2.5 py-1 text-xs font-semibold ${
-                    experiment.status === "Running"
-                      ? "bg-emerald-50 text-emerald-700"
-                      : experiment.status === "Planned"
-                        ? "bg-amber-50 text-amber-700"
-                        : "bg-slate-100 text-slate-700"
-                  }`}
+        {experiments.length === 0 ? (
+          <div className="mt-5 rounded-xl border border-indigo-100 bg-indigo-50/40 p-5 text-sm text-slate-600">
+            No experiments yet. Start with one hypothesis tied to a priority page.
+          </div>
+        ) : (
+          <>
+            {experiments.every((experiment) => experiment.status !== "Running") && (
+              <div className="mt-5 rounded-xl border border-indigo-100 bg-indigo-50/40 p-4 text-sm text-slate-600">
+                No active experiments right now. Move a planned test to Running to collect data.
+              </div>
+            )}
+            <ul className="mt-5 space-y-2.5">
+              {experiments.map((experiment) => (
+                <li
+                  key={experiment.name}
+                  className={experiment.status === "Running" ? featuredCardClass : standardCardClass}
                 >
-                  Status: {experiment.status}
-                </span>
-              </div>
-              <div className="mt-3 rounded-lg border border-slate-100 bg-white/70 p-3">
-                <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
-                  Hypothesis
-                </p>
-                <p className="mt-1 text-sm text-slate-700">{experiment.hypothesis}</p>
-              </div>
-              <dl className={trackerMetaClass}>
-                <div>
-                  <dt className="font-medium text-slate-700">Target page</dt>
-                  <dd className="text-slate-600">
-                    <Link
-                      href={experiment.targetPath}
-                      className="text-indigo-700 transition hover:text-indigo-800 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-300"
+                  <div className="flex flex-wrap items-center justify-between gap-2">
+                    <h2 className="font-semibold text-slate-900">{experiment.name}</h2>
+                    <span
+                      className={`rounded-full px-2.5 py-1 text-xs font-semibold ${
+                        experiment.status === "Running"
+                          ? "bg-emerald-50 text-emerald-700"
+                          : experiment.status === "Planned"
+                            ? "bg-amber-50 text-amber-700"
+                            : "bg-slate-100 text-slate-700"
+                      }`}
                     >
-                      {experiment.targetPage}
-                    </Link>
-                  </dd>
-                </div>
-                <div>
-                  <dt className="font-medium text-slate-700">Primary metric</dt>
-                  <dd className="text-slate-600">{experiment.metric}</dd>
-                </div>
-                <div>
-                  <dt className="font-medium text-slate-700">Success signal</dt>
-                  <dd className="text-slate-600">{experiment.successSignal}</dd>
-                </div>
-                <div>
-                  <dt className="font-medium text-slate-700">Related idea</dt>
-                  <dd className="text-slate-600">
-                    <Link
-                      href="/content-ideas"
-                      className="text-indigo-700 transition hover:text-indigo-800 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-300"
-                    >
-                      {experiment.relatedIdea}
-                    </Link>
-                  </dd>
-                </div>
-              </dl>
-            </li>
-          ))}
-        </ul>
+                      Status: {experiment.status}
+                    </span>
+                  </div>
+                  <div className="mt-3 rounded-lg border border-slate-100 bg-white/70 p-3">
+                    <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+                      Hypothesis
+                    </p>
+                    <p className="mt-1 text-sm text-slate-700">{experiment.hypothesis}</p>
+                  </div>
+                  <dl className={trackerMetaClass}>
+                    <div>
+                      <dt className="font-medium text-slate-700">Target page</dt>
+                      <dd className="text-slate-600">
+                        <Link
+                          href={experiment.targetPath}
+                          className="text-indigo-700 transition hover:text-indigo-800 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-300"
+                        >
+                          {experiment.targetPage}
+                        </Link>
+                      </dd>
+                    </div>
+                    <div>
+                      <dt className="font-medium text-slate-700">Primary metric</dt>
+                      <dd className="text-slate-600">{experiment.metric}</dd>
+                    </div>
+                    <div>
+                      <dt className="font-medium text-slate-700">Success signal</dt>
+                      <dd className="text-slate-600">{experiment.successSignal}</dd>
+                    </div>
+                    <div>
+                      <dt className="font-medium text-slate-700">Related idea</dt>
+                      <dd className="text-slate-600">
+                        <Link
+                          href="/content-ideas"
+                          className="text-indigo-700 transition hover:text-indigo-800 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-300"
+                        >
+                          {experiment.relatedIdea}
+                        </Link>
+                      </dd>
+                    </div>
+                  </dl>
+                </li>
+              ))}
+            </ul>
+          </>
+        )}
       </div>
     </main>
   );

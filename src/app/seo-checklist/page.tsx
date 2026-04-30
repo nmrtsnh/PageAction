@@ -110,23 +110,29 @@ export default function SeoChecklistRoute() {
               <h2 className="text-base font-semibold text-slate-900">{group.title}</h2>
               <p className="mt-1 text-sm text-slate-600">{group.description}</p>
               <ul className="mt-3 space-y-1.5">
-                {group.items.map((item) => (
-                  <li
-                    key={`${group.title}-${item.task}`}
-                    className={secondaryRowClass}
-                  >
-                    <span className="mt-0.5 inline-flex h-4 w-4 rounded-sm border border-indigo-300 bg-white" />
-                    <span>
-                      {item.task}{" "}
-                      <Link
-                        href={item.pagePath}
-                        className="text-indigo-700 transition hover:text-indigo-800 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-300"
-                      >
-                        ({item.page})
-                      </Link>
-                    </span>
+                {group.items.length === 0 ? (
+                  <li className="rounded-lg border border-indigo-100 bg-indigo-50/40 px-3 py-2 text-sm text-slate-600">
+                    No checklist items in this group right now.
                   </li>
-                ))}
+                ) : (
+                  group.items.map((item) => (
+                    <li
+                      key={`${group.title}-${item.task}`}
+                      className={secondaryRowClass}
+                    >
+                      <span className="mt-0.5 inline-flex h-4 w-4 rounded-sm border border-indigo-300 bg-white" />
+                      <span>
+                        {item.task}{" "}
+                        <Link
+                          href={item.pagePath}
+                          className="text-indigo-700 transition hover:text-indigo-800 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-300"
+                        >
+                          ({item.page})
+                        </Link>
+                      </span>
+                    </li>
+                  ))
+                )}
               </ul>
             </li>
           ))}
