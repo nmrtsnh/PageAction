@@ -1,4 +1,5 @@
 import { SummaryCard } from "@/components/dashboard/summary-card";
+import { ModuleIcon } from "@/components/layout/module-icon";
 import { WorkspaceNav } from "@/components/layout/workspace-nav";
 import { PAGEACTION_WORKSPACE_EYEBROW } from "@/lib/pageaction-copy";
 import Link from "next/link";
@@ -35,6 +36,10 @@ const weeklyInsights = [
 ];
 
 export default function InsightsRoute() {
+  const featuredCardClass =
+    "rounded-xl border border-indigo-200 bg-gradient-to-b from-indigo-50 to-white p-5 shadow-sm ring-1 ring-indigo-100";
+  const standardCardClass = "rounded-xl border border-slate-200 bg-white p-5";
+
   return (
     <main className="min-h-screen bg-slate-50 text-slate-900">
       <div className="mx-auto w-full max-w-6xl p-6 md:p-10">
@@ -43,7 +48,12 @@ export default function InsightsRoute() {
           <p className="text-xs font-semibold uppercase tracking-wide text-indigo-700">
             {PAGEACTION_WORKSPACE_EYEBROW}
           </p>
-          <h1 className="mt-2 text-3xl font-bold">Insights</h1>
+          <h1 className="mt-2 inline-flex items-center gap-2 text-3xl font-bold">
+            <span className="inline-flex h-8 w-8 items-center justify-center rounded-md bg-indigo-100 text-indigo-700">
+              <ModuleIcon module="insights" className="h-4 w-4" />
+            </span>
+            Insights
+          </h1>
           <p className="mt-2 text-sm text-slate-600">
             Weekly growth intelligence for GlobeGlider with linked evidence
             from pages, content, and experiments.
@@ -68,7 +78,7 @@ export default function InsightsRoute() {
           {weeklyInsights.map((item) => (
             <article
               key={item.title}
-              className="rounded-xl border border-slate-200 bg-white p-5"
+              className={item.title.startsWith("Biggest lift") ? featuredCardClass : standardCardClass}
             >
               <h2 className="text-base font-semibold text-slate-900">{item.title}</h2>
               <p className="mt-2 text-sm text-slate-600">{item.summary}</p>

@@ -1,3 +1,4 @@
+import { ModuleIcon } from "@/components/layout/module-icon";
 import { WorkspaceNav } from "@/components/layout/workspace-nav";
 import { PAGEACTION_WORKSPACE_EYEBROW } from "@/lib/pageaction-copy";
 import Link from "next/link";
@@ -36,6 +37,11 @@ const ideas = [
 ];
 
 export default function ContentIdeasRoute() {
+  const featuredCardClass =
+    "rounded-xl border border-indigo-200 bg-gradient-to-b from-indigo-50 to-white p-5 shadow-sm ring-1 ring-indigo-100";
+  const standardCardClass =
+    "rounded-xl border border-slate-200 bg-white p-5 transition hover:border-indigo-200 hover:bg-indigo-50/30";
+
   return (
     <main className="min-h-screen bg-slate-50 text-slate-900">
       <div className="mx-auto w-full max-w-6xl p-6 md:p-10">
@@ -44,7 +50,12 @@ export default function ContentIdeasRoute() {
           <p className="text-xs font-semibold uppercase tracking-wide text-indigo-700">
             {PAGEACTION_WORKSPACE_EYEBROW}
           </p>
-          <h1 className="mt-2 text-3xl font-bold">Content Ideas</h1>
+          <h1 className="mt-2 inline-flex items-center gap-2 text-3xl font-bold">
+            <span className="inline-flex h-8 w-8 items-center justify-center rounded-md bg-indigo-100 text-indigo-700">
+              <ModuleIcon module="contentIdeas" className="h-4 w-4" />
+            </span>
+            Content Ideas
+          </h1>
           <p className="mt-2 text-sm text-slate-600">
             Plan GlobeGlider content with direct links to source pages, open
             issues, and active experiments.
@@ -75,7 +86,7 @@ export default function ContentIdeasRoute() {
           {ideas.map((idea) => (
             <li
               key={idea.title}
-              className="rounded-xl border border-slate-200 bg-white p-5 transition hover:border-indigo-200 hover:bg-indigo-50/30"
+              className={idea.stage === "Ready to brief" ? featuredCardClass : standardCardClass}
             >
               <div className="flex flex-wrap items-center gap-2">
                 <span className="rounded-full bg-indigo-50 px-2.5 py-1 text-xs font-semibold text-indigo-700">

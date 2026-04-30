@@ -1,4 +1,5 @@
 import { PagesView } from "@/components/dashboard/pages-view";
+import { ModuleIcon } from "@/components/layout/module-icon";
 import { WorkspaceNav } from "@/components/layout/workspace-nav";
 import { PAGEACTION_WORKSPACE_EYEBROW } from "@/lib/pageaction-copy";
 import { getPageTableRows } from "@/lib/mock-page-audits";
@@ -23,7 +24,12 @@ export default function PagesRoute() {
           <p className="text-xs font-semibold uppercase tracking-wide text-indigo-700">
             {PAGEACTION_WORKSPACE_EYEBROW}
           </p>
-          <h1 className="mt-2 text-3xl font-bold">Pages</h1>
+          <h1 className="mt-2 inline-flex items-center gap-2 text-3xl font-bold">
+            <span className="inline-flex h-8 w-8 items-center justify-center rounded-md bg-indigo-100 text-indigo-700">
+              <ModuleIcon module="pages" className="h-4 w-4" />
+            </span>
+            Pages
+          </h1>
           <p className="mt-2 text-sm text-slate-600">
             Review all website pages, issue volume, priority level, and current
             fix status.

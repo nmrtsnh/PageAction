@@ -1,3 +1,4 @@
+import { ModuleIcon } from "@/components/layout/module-icon";
 import { WorkspaceNav } from "@/components/layout/workspace-nav";
 import { PAGEACTION_WORKSPACE_EYEBROW } from "@/lib/pageaction-copy";
 import Link from "next/link";
@@ -54,6 +55,12 @@ const checklistGroups = [
 ];
 
 export default function SeoChecklistRoute() {
+  const featuredCardClass =
+    "rounded-xl border border-indigo-200 bg-gradient-to-b from-indigo-50 to-white p-5 shadow-sm ring-1 ring-indigo-100";
+  const standardCardClass = "rounded-xl border border-slate-200 bg-white p-5";
+  const secondaryRowClass =
+    "flex items-start gap-3 rounded-lg border border-indigo-100 bg-indigo-50/40 px-3 py-2 text-sm text-slate-700";
+
   return (
     <main className="min-h-screen bg-slate-50 text-slate-900">
       <div className="mx-auto w-full max-w-6xl p-6 md:p-10">
@@ -62,7 +69,12 @@ export default function SeoChecklistRoute() {
           <p className="text-xs font-semibold uppercase tracking-wide text-indigo-700">
             {PAGEACTION_WORKSPACE_EYEBROW}
           </p>
-          <h1 className="mt-2 text-3xl font-bold">SEO Checklist</h1>
+          <h1 className="mt-2 inline-flex items-center gap-2 text-3xl font-bold">
+            <span className="inline-flex h-8 w-8 items-center justify-center rounded-md bg-indigo-100 text-indigo-700">
+              <ModuleIcon module="seoChecklist" className="h-4 w-4" />
+            </span>
+            SEO Checklist
+          </h1>
           <p className="mt-2 text-sm text-slate-600">
             Workflow-based SEO tasks tied to GlobeGlider pages that need action.
           </p>
@@ -82,14 +94,17 @@ export default function SeoChecklistRoute() {
 
         <ul className="mt-4 space-y-3">
           {checklistGroups.map((group) => (
-            <li key={group.title} className="rounded-xl border border-slate-200 bg-white p-5">
+            <li
+              key={group.title}
+              className={group.title === "Critical page fixes" ? featuredCardClass : standardCardClass}
+            >
               <h2 className="text-base font-semibold text-slate-900">{group.title}</h2>
               <p className="mt-1 text-sm text-slate-600">{group.description}</p>
               <ul className="mt-4 space-y-2">
                 {group.items.map((item) => (
                   <li
                     key={`${group.title}-${item.task}`}
-                    className="flex items-start gap-3 rounded-lg border border-slate-100 bg-slate-50 px-3 py-2 text-sm text-slate-700"
+                    className={secondaryRowClass}
                   >
                     <span className="mt-0.5 inline-flex h-4 w-4 rounded-sm border border-indigo-300 bg-white" />
                     <span>

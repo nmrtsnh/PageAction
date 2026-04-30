@@ -1,4 +1,5 @@
 import { SummaryCard } from "@/components/dashboard/summary-card";
+import { ModuleIcon } from "@/components/layout/module-icon";
 import { WorkspaceNav } from "@/components/layout/workspace-nav";
 import { PAGEACTION_WORKSPACE_EYEBROW } from "@/lib/pageaction-copy";
 import { getPageSummary } from "@/lib/mock-page-audits";
@@ -51,20 +52,35 @@ const activeExperiments = [
 
 export default function DashboardRoute() {
   const summary = getPageSummary();
+  const standardCardClass = "rounded-xl border border-slate-200 bg-white p-5";
+  const secondaryCardClass = "rounded-xl border border-indigo-100 bg-indigo-50/40";
 
   return (
     <main className="min-h-screen bg-slate-50 text-slate-900">
       <div className="mx-auto w-full max-w-6xl p-6 md:p-10">
         <WorkspaceNav />
-        <header className="rounded-xl border border-indigo-100 bg-white p-6">
+        <header className="rounded-xl border border-indigo-200 bg-gradient-to-r from-indigo-50/70 via-white to-white p-6 shadow-sm ring-1 ring-indigo-100/80">
           <p className="text-xs font-semibold uppercase tracking-wide text-indigo-700">
             {PAGEACTION_WORKSPACE_EYEBROW}
           </p>
-          <h1 className="mt-2 text-3xl font-bold">Dashboard</h1>
-          <p className="mt-3 max-w-3xl text-sm text-slate-600">
+          <h1 className="mt-2 inline-flex items-center gap-2 text-3xl font-bold text-slate-950">
+            <span className="inline-flex h-8 w-8 items-center justify-center rounded-md bg-indigo-100 text-indigo-700">
+              <ModuleIcon module="dashboard" className="h-4 w-4" />
+            </span>
+            Dashboard
+          </h1>
+          <p className="mt-3 max-w-3xl text-sm text-slate-700">
             GlobeGlider command center for page quality, content execution, and
             weekly growth decisions.
           </p>
+          <div className="mt-4 flex flex-wrap gap-2">
+            <span className="rounded-full border border-indigo-200 bg-white px-2.5 py-1 text-xs font-medium text-indigo-700">
+              Command center
+            </span>
+            <span className="rounded-full border border-indigo-200 bg-white px-2.5 py-1 text-xs font-medium text-indigo-700">
+              Weekly priorities
+            </span>
+          </div>
         </header>
 
         <section className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -78,7 +94,7 @@ export default function DashboardRoute() {
         </section>
 
         <section className="mt-6 grid gap-4 lg:grid-cols-3">
-          <article className="rounded-xl border border-slate-200 bg-white p-5 lg:col-span-2">
+          <article className={`${standardCardClass} lg:col-span-2`}>
             <div className="flex items-center justify-between gap-2">
               <h2 className="text-base font-semibold text-slate-900">
                 Top pages needing attention
@@ -104,16 +120,16 @@ export default function DashboardRoute() {
             </ul>
           </article>
 
-          <article className="rounded-xl border border-indigo-100 bg-indigo-50/40 p-5">
+          <article className="rounded-xl border border-indigo-200 bg-gradient-to-b from-indigo-50 to-white p-5 shadow-sm ring-1 ring-indigo-100">
             <h2 className="text-base font-semibold text-slate-900">This week</h2>
-            <p className="mt-2 text-sm text-slate-600">
+            <p className="mt-2 text-sm text-slate-700">
               Ship two high-priority fixes, publish one answer-first update, and
               keep one experiment live with clean tracking.
             </p>
             <div className="mt-4 flex flex-wrap gap-2">
               <Link
                 href="/seo-checklist"
-                className="inline-flex rounded-md border border-indigo-200 bg-white px-2.5 py-1 text-xs font-medium text-indigo-700 hover:bg-indigo-100"
+                className="inline-flex rounded-md border border-indigo-600 bg-indigo-600 px-2.5 py-1 text-xs font-medium text-white hover:bg-indigo-700"
               >
                 SEO Checklist
               </Link>
@@ -128,7 +144,7 @@ export default function DashboardRoute() {
         </section>
 
         <section className="mt-6 grid gap-4 lg:grid-cols-2">
-          <article className="rounded-xl border border-slate-200 bg-white p-5">
+          <article className={standardCardClass}>
             <div className="flex items-center justify-between gap-2">
               <h2 className="text-base font-semibold text-slate-900">
                 New content opportunities
@@ -139,10 +155,7 @@ export default function DashboardRoute() {
             </div>
             <ul className="mt-4 space-y-2">
               {contentOpportunities.map((opportunity) => (
-                <li
-                  key={opportunity.title}
-                  className="rounded-lg border border-slate-100 bg-slate-50 p-3"
-                >
+                <li key={opportunity.title} className={`${secondaryCardClass} rounded-lg p-3`}>
                   <p className="font-medium text-slate-900">{opportunity.title}</p>
                   <p className="mt-1 text-sm text-slate-600">{opportunity.source}</p>
                 </li>
@@ -150,7 +163,7 @@ export default function DashboardRoute() {
             </ul>
           </article>
 
-          <article className="rounded-xl border border-slate-200 bg-white p-5">
+          <article className={standardCardClass}>
             <div className="flex items-center justify-between gap-2">
               <h2 className="text-base font-semibold text-slate-900">Active experiments</h2>
               <Link
@@ -162,10 +175,7 @@ export default function DashboardRoute() {
             </div>
             <ul className="mt-4 space-y-2">
               {activeExperiments.map((experiment) => (
-                <li
-                  key={experiment.name}
-                  className="rounded-lg border border-slate-100 bg-slate-50 p-3"
-                >
+                <li key={experiment.name} className={`${secondaryCardClass} rounded-lg p-3`}>
                   <div className="flex flex-wrap items-center gap-2">
                     <p className="font-medium text-slate-900">{experiment.name}</p>
                     <span className="rounded-full bg-emerald-50 px-2 py-0.5 text-xs font-semibold text-emerald-700">
@@ -190,7 +200,7 @@ export default function DashboardRoute() {
           </Link>
           <Link
             href="/content-ideas"
-            className="inline-flex items-center rounded-lg border border-indigo-200 bg-indigo-50 px-4 py-2 text-sm font-medium text-indigo-700 transition hover:bg-indigo-100"
+            className="inline-flex items-center rounded-lg border border-indigo-200 bg-white px-4 py-2 text-sm font-medium text-indigo-700 transition hover:bg-indigo-50"
           >
             Open Content Ideas
           </Link>

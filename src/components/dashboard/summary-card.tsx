@@ -5,7 +5,7 @@ type SummaryCardProps = {
 
 export function SummaryCard({ label, value }: SummaryCardProps) {
   return (
-    <article className="rounded-xl border border-slate-200 bg-white p-5">
+    <article className="rounded-xl border border-indigo-100 bg-white p-5">
       <p className="text-sm font-medium text-indigo-700">{label}</p>
       <p className="mt-2 text-3xl font-bold text-slate-900">{value}</p>
     </article>
