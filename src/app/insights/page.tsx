@@ -72,6 +72,9 @@ export default function InsightsRoute() {
             Page fixes are moving in the right direction, with the biggest
             upside still in answer-first updates tied to high-priority issues.
           </p>
+          <p className="mt-2 text-xs font-medium text-indigo-700">
+            Why this matters: Weekly signals guide what to prioritize next across modules.
+          </p>
         </div>
 
         <section className="mt-5 space-y-2.5">

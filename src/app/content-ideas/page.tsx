@@ -80,6 +80,9 @@ export default function ContentIdeasRoute() {
             </Link>
             .
           </p>
+          <p className="mt-2 text-xs font-medium text-indigo-700">
+            Why this matters: Better ideas create stronger experiments and fewer wasted content cycles.
+          </p>
         </section>
 
         <ul className="mt-5 space-y-2.5">

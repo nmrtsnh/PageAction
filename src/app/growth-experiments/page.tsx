@@ -82,6 +82,9 @@ export default function GrowthExperimentsRoute() {
             </Link>
             .
           </p>
+          <p className="mt-2 text-xs font-medium text-indigo-700">
+            Why this matters: Experiments validate what actually moves metrics before broader rollout.
+          </p>
         </section>
 
         <ul className="mt-5 space-y-2.5">

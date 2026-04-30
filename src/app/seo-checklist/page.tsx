@@ -91,6 +91,9 @@ export default function SeoChecklistRoute() {
           </Link>
           .
         </p>
+        <p className="mt-2 text-xs font-medium text-indigo-700">
+          Why this matters: Consistent SEO execution improves discoverability on GlobeGlider&apos;s highest-value pages.
+        </p>
 
         <ul className="mt-3.5 space-y-2.5">
           {checklistGroups.map((group) => (
