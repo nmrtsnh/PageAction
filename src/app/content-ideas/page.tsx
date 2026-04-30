@@ -62,7 +62,7 @@ export default function ContentIdeasRoute() {
           </p>
         </header>
 
-        <section className="mt-6 rounded-xl border border-indigo-100 bg-indigo-50/40 p-5">
+        <section className="mt-5 rounded-xl border border-indigo-100 bg-indigo-50/40 p-5">
           <h2 className="text-base font-semibold text-slate-900">
             Weekly planning focus
           </h2>
@@ -82,7 +82,7 @@ export default function ContentIdeasRoute() {
           </p>
         </section>
 
-        <ul className="mt-6 space-y-3">
+        <ul className="mt-5 space-y-2.5">
           {ideas.map((idea) => (
             <li
               key={idea.title}
@@ -96,9 +96,9 @@ export default function ContentIdeasRoute() {
                   {idea.format}
                 </span>
               </div>
-              <h2 className="mt-3 font-semibold text-slate-900">{idea.title}</h2>
-              <p className="mt-2 text-sm text-slate-600">{idea.outcome}</p>
-              <dl className="mt-4 grid gap-2 text-sm sm:grid-cols-2">
+              <h2 className="mt-2.5 font-semibold text-slate-900">{idea.title}</h2>
+              <p className="mt-1.5 text-sm text-slate-600">{idea.outcome}</p>
+              <dl className="mt-3.5 grid gap-2 text-sm sm:grid-cols-2">
                 <div>
                   <dt className="font-medium text-slate-700">Source page</dt>
                   <dd className="text-slate-600">

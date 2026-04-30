@@ -83,7 +83,7 @@ export default function DashboardRoute() {
           </div>
         </header>
 
-        <section className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <section className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           <SummaryCard label="Total pages" value={summary.totalPages} />
           <SummaryCard label="Pages with issues" value={summary.pagesWithIssues} />
           <SummaryCard
@@ -93,7 +93,7 @@ export default function DashboardRoute() {
           <SummaryCard label="Quick wins" value={summary.quickWins} />
         </section>
 
-        <section className="mt-6 grid gap-4 lg:grid-cols-3">
+        <section className="mt-5 grid gap-4 lg:grid-cols-3">
           <article className={`${standardCardClass} lg:col-span-2`}>
             <div className="flex items-center justify-between gap-2">
               <h2 className="text-base font-semibold text-slate-900">
@@ -103,7 +103,7 @@ export default function DashboardRoute() {
                 Open pages
               </Link>
             </div>
-            <ul className="mt-4 space-y-3">
+            <ul className="mt-3.5 space-y-2.5">
               {priorityPages.map((page) => (
                 <li key={page.name} className="rounded-lg border border-slate-200 p-3">
                   <div className="flex flex-wrap items-center gap-2">
@@ -143,7 +143,7 @@ export default function DashboardRoute() {
           </article>
         </section>
 
-        <section className="mt-6 grid gap-4 lg:grid-cols-2">
+        <section className="mt-5 grid gap-4 lg:grid-cols-2">
           <article className={standardCardClass}>
             <div className="flex items-center justify-between gap-2">
               <h2 className="text-base font-semibold text-slate-900">
@@ -153,7 +153,7 @@ export default function DashboardRoute() {
                 Open planning board
               </Link>
             </div>
-            <ul className="mt-4 space-y-2">
+            <ul className="mt-3.5 space-y-2">
               {contentOpportunities.map((opportunity) => (
                 <li key={opportunity.title} className={`${secondaryCardClass} rounded-lg p-3`}>
                   <p className="font-medium text-slate-900">{opportunity.title}</p>
@@ -173,7 +173,7 @@ export default function DashboardRoute() {
                 Open experiments
               </Link>
             </div>
-            <ul className="mt-4 space-y-2">
+            <ul className="mt-3.5 space-y-2">
               {activeExperiments.map((experiment) => (
                 <li key={experiment.name} className={`${secondaryCardClass} rounded-lg p-3`}>
                   <div className="flex flex-wrap items-center gap-2">
@@ -191,7 +191,7 @@ export default function DashboardRoute() {
           </article>
         </section>
 
-        <div className="mt-6 flex flex-wrap gap-3">
+        <div className="mt-5 flex flex-wrap gap-2.5">
           <Link
             href="/pages"
             className="inline-flex items-center rounded-lg border border-indigo-600 bg-indigo-600 px-4 py-2 text-sm font-medium text-white transition hover:bg-indigo-700"

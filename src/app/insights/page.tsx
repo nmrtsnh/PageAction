@@ -60,13 +60,13 @@ export default function InsightsRoute() {
           </p>
         </header>
 
-        <section className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <section className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           <SummaryCard label="Pages improved this week" value={6} />
           <SummaryCard label="Experiments running" value={1} />
           <SummaryCard label="New content ideas" value={3} />
         </section>
 
-        <div className="mt-6 rounded-xl border border-indigo-100 bg-indigo-50/40 p-5">
+        <div className="mt-5 rounded-xl border border-indigo-100 bg-indigo-50/40 p-5">
           <h2 className="text-base font-semibold">At a glance</h2>
           <p className="mt-2 text-sm text-slate-600">
             Page fixes are moving in the right direction, with the biggest
@@ -74,15 +74,15 @@ export default function InsightsRoute() {
           </p>
         </div>
 
-        <section className="mt-6 space-y-3">
+        <section className="mt-5 space-y-2.5">
           {weeklyInsights.map((item) => (
             <article
               key={item.title}
               className={item.title.startsWith("Biggest lift") ? featuredCardClass : standardCardClass}
             >
               <h2 className="text-base font-semibold text-slate-900">{item.title}</h2>
-              <p className="mt-2 text-sm text-slate-600">{item.summary}</p>
-              <div className="mt-3 flex flex-wrap gap-2">
+              <p className="mt-1.5 text-sm text-slate-600">{item.summary}</p>
+              <div className="mt-2.5 flex flex-wrap gap-2">
                 {item.references.map((reference) => (
                   <Link
                     key={reference.label}

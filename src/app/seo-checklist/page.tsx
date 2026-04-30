@@ -80,7 +80,7 @@ export default function SeoChecklistRoute() {
           </p>
         </header>
 
-        <p className="mt-6 text-sm text-slate-600">
+        <p className="mt-5 text-sm text-slate-600">
           Review issues in{" "}
           <Link href="/pages" className="text-indigo-700 hover:underline">
             Pages
@@ -92,7 +92,7 @@ export default function SeoChecklistRoute() {
           .
         </p>
 
-        <ul className="mt-4 space-y-3">
+        <ul className="mt-3.5 space-y-2.5">
           {checklistGroups.map((group) => (
             <li
               key={group.title}
@@ -100,7 +100,7 @@ export default function SeoChecklistRoute() {
             >
               <h2 className="text-base font-semibold text-slate-900">{group.title}</h2>
               <p className="mt-1 text-sm text-slate-600">{group.description}</p>
-              <ul className="mt-4 space-y-2">
+              <ul className="mt-3 space-y-1.5">
                 {group.items.map((item) => (
                   <li
                     key={`${group.title}-${item.task}`}

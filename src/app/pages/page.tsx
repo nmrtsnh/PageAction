@@ -12,7 +12,7 @@ export default function PagesRoute() {
     <main className="min-h-screen bg-slate-50 text-slate-900">
       <div className="mx-auto w-full max-w-6xl p-6 md:p-10">
         <WorkspaceNav />
-        <p className="mb-3">
+        <p className="mb-2.5">
           <Link
             href="/dashboard"
             className="text-sm text-indigo-700 transition hover:text-indigo-800 hover:underline"
@@ -20,7 +20,7 @@ export default function PagesRoute() {
             Back to Overview
           </Link>
         </p>
-        <header className="mb-6">
+        <header className="mb-5">
           <p className="text-xs font-semibold uppercase tracking-wide text-indigo-700">
             {PAGEACTION_WORKSPACE_EYEBROW}
           </p>

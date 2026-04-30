@@ -77,14 +77,14 @@ export function PagesView({ rows }: PagesViewProps) {
   }
 
   const selectClassName =
-    "rounded-lg border border-slate-300 bg-white px-2.5 py-1.5 text-sm text-slate-800 shadow-sm focus:border-slate-400 focus:outline-none focus:ring-1 focus:ring-slate-300";
+    "rounded-lg border border-slate-300 bg-white px-2.5 py-1 text-sm text-slate-800 shadow-sm focus:border-slate-400 focus:outline-none focus:ring-1 focus:ring-slate-300";
 
   const inputClassName =
-    "w-full min-w-0 rounded-lg border border-slate-300 bg-white px-2.5 py-1.5 text-sm text-slate-800 shadow-sm placeholder:text-slate-400 focus:border-slate-400 focus:outline-none focus:ring-1 focus:ring-slate-300 sm:min-w-[16rem]";
+    "w-full min-w-0 rounded-lg border border-slate-300 bg-white px-2.5 py-1 text-sm text-slate-800 shadow-sm placeholder:text-slate-400 focus:border-slate-400 focus:outline-none focus:ring-1 focus:ring-slate-300 sm:min-w-[16rem]";
 
   return (
     <div>
-      <div className="mb-4 flex flex-col gap-2.5 rounded-xl border border-slate-200 bg-white p-3">
+      <div className="mb-3 flex flex-col gap-2 rounded-xl border border-slate-200 bg-white p-2.5">
         <label className="flex w-full flex-col gap-0.5 text-xs font-semibold uppercase tracking-wide text-slate-500">
           Search
           <input
@@ -96,8 +96,8 @@ export function PagesView({ rows }: PagesViewProps) {
             autoComplete="off"
           />
         </label>
-        <div className="flex flex-col gap-2 sm:flex-row sm:flex-nowrap sm:items-end sm:justify-between sm:gap-3">
-          <div className="flex min-w-0 flex-1 flex-col gap-2 sm:flex-row sm:flex-wrap sm:items-end sm:gap-x-3 sm:gap-y-2">
+        <div className="flex flex-col gap-1.5 sm:flex-row sm:flex-nowrap sm:items-end sm:justify-between sm:gap-2.5">
+          <div className="flex min-w-0 flex-1 flex-col gap-1.5 sm:flex-row sm:flex-wrap sm:items-end sm:gap-x-2.5 sm:gap-y-1.5">
             <label className="flex flex-col gap-0.5 text-xs font-semibold uppercase tracking-wide text-slate-500">
               Status
               <select
@@ -154,7 +154,7 @@ export function PagesView({ rows }: PagesViewProps) {
             type="button"
             onClick={resetFilters}
             disabled={!hasActiveFilters}
-            className="inline-flex shrink-0 items-center justify-center self-start rounded-lg border border-slate-300 bg-white px-3 py-1.5 text-sm font-medium text-slate-800 transition hover:bg-slate-100 disabled:cursor-not-allowed disabled:opacity-50 sm:self-end"
+            className="inline-flex shrink-0 items-center justify-center self-start rounded-lg border border-slate-300 bg-white px-3 py-1 text-sm font-medium text-slate-800 transition hover:bg-slate-100 disabled:cursor-not-allowed disabled:opacity-50 sm:self-end"
           >
             Reset filters
           </button>
