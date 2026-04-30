@@ -44,6 +44,8 @@ export default function GrowthExperimentsRoute() {
     "rounded-xl border border-indigo-200 bg-gradient-to-b from-indigo-50 to-white p-5 shadow-sm ring-1 ring-indigo-100 transition hover:border-indigo-300";
   const standardCardClass =
     "rounded-xl border border-slate-200 bg-white p-5 transition hover:border-indigo-200 hover:bg-indigo-50/30";
+  const trackerMetaClass =
+    "mt-3.5 grid gap-2 rounded-lg border border-indigo-100 bg-indigo-50/40 p-3 text-sm sm:grid-cols-2";
 
   return (
     <main className="min-h-screen bg-slate-50 text-slate-900">
@@ -88,7 +90,8 @@ export default function GrowthExperimentsRoute() {
               key={experiment.name}
               className={experiment.status === "Running" ? featuredCardClass : standardCardClass}
             >
-              <div className="flex items-center gap-2">
+              <div className="flex flex-wrap items-center justify-between gap-2">
+                <h2 className="font-semibold text-slate-900">{experiment.name}</h2>
                 <span
                   className={`rounded-full px-2.5 py-1 text-xs font-semibold ${
                     experiment.status === "Running"
@@ -98,12 +101,16 @@ export default function GrowthExperimentsRoute() {
                         : "bg-slate-100 text-slate-700"
                   }`}
                 >
-                  {experiment.status}
+                  Status: {experiment.status}
                 </span>
               </div>
-              <h2 className="mt-2.5 font-semibold text-slate-900">{experiment.name}</h2>
-              <p className="mt-1.5 text-sm text-slate-600">{experiment.hypothesis}</p>
-              <dl className="mt-3.5 grid gap-2 text-sm sm:grid-cols-2">
+              <div className="mt-3 rounded-lg border border-slate-100 bg-white/70 p-3">
+                <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+                  Hypothesis
+                </p>
+                <p className="mt-1 text-sm text-slate-700">{experiment.hypothesis}</p>
+              </div>
+              <dl className={trackerMetaClass}>
                 <div>
                   <dt className="font-medium text-slate-700">Target page</dt>
                   <dd className="text-slate-600">
